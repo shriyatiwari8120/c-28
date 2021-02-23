@@ -1,8 +1,8 @@
 class Chain {
-    constructor(b1, b2){
+    constructor(b1, p2){
         var props = {
             bodyA: b1,
-            bodyB: b2,
+            pointB: p2,
             length: 15,
             stiffness: 0.08
         }
@@ -11,8 +11,14 @@ class Chain {
     }
 
     display() {
-        var posA = this.rope.bodyA.position;
-        var posB = this.rope.bodyB.position;
-        line(posA.x, posA.y, posB.x, posB.y);
+        if (this.rope.bodyA) {
+            var posA = this.rope.bodyA.position;
+            var posB = this.rope.pointB
+            line(posA.x, posA.y, posB.x, posB.y);
+        }
+    }
+
+    fly() {
+        this.rope.bodyA = null;
     }
 }

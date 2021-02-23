@@ -39,7 +39,7 @@ function setup(){
 
     bird = new Bird(100,100);
 
-    rope = new Chain(log6.body, bird.body);
+    rope = new Chain(bird.body, {x:150,y:100});
 
 }
 
@@ -72,4 +72,15 @@ function draw(){
     
 
     // line(bird.body.position.x, bird.body.position.y, log6.body.position.x, log6.body.position.y)
+}
+
+function mouseDragged() {
+    Matter.Body.setPosition(bird.body , {
+        x : mouseX,
+        y : mouseY
+    })
+}
+
+function mouseReleased() {
+    rope.fly();
 }
